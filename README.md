@@ -50,8 +50,7 @@ Infrastructure
 
 CNS (Container Native Storage) as Storage solution.
 
-![alt text](https://gitlab.vass.es/vass/ocp-vagrant/raw/Origin3.6/img/Infraestruture.png)
-
+![alt text](https://github.com/felix-centenera/OKD_CentOS7.5/blob/okd3.6_CentOS7.5/img/Infraestruture.png)
 Details
 --------
 User Virtual Machine:
