@@ -7,9 +7,9 @@ yum update -y
 yum upgrade -y
 yum --enablerepo=extras install epel-release -y
 
-yum -y  install  pyOpenSSL python-pip python-dev sshpass
+yum -y  install  pyOpenSSL python-pip python-dev python-devel sshpass
 sudo mkdir -p /etc/ansible
-sudo -H pip install ansible==2.6.5
+sudo -H pip install ansible==2.2.2.0
 sudo mv /tmp/ansible.cfg /etc/ansible/
 sudo mv /tmp/ansible /root/
 ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa

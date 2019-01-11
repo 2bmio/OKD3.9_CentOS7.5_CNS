@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       app.vm.network "private_network", ip: "192.168.33.7"
       config.vm.provision "shell", path: "./nodes/config.sh"
       app.vm.provider "virtualbox" do |v|
-          v.name = "lb-one-vagrant"
+          v.name = "lb-one-okd36"
           v.memory = 512
           v.cpus = 1
       end
@@ -24,16 +24,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       app.vm.hostname = "master-two.192.168.33.3.xip.io"
       app.vm.network "private_network", ip: "192.168.33.3"
       app.vm.provider "virtualbox" do |v|
-        v.name = "master-two-vagrant"
+        v.name = "master-two-okd36"
         v.memory = 2000
         v.cpus = 1
         #
          # Add first disk
         #
-        unless File.exists?("$HOME/VirtualBox/master-two/sdb.vdi")
+        unless File.exists?("/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-two/sdb.vdi")
         v.customize [
           'createmedium', 'disk',
-          '--filename', "$HOME/VirtualBox/master-two/sdb.vdi",
+          '--filename', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-two/sdb.vdi",
           '--format', 'VDI',
           '--size', 20 * 1024
         ]
@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
        '--port', 1,
        '--device', 0,
        '--type', 'hdd',
-       '--medium', "$HOME/VirtualBox/master-two/sdb.vdi"
+       '--medium', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-two/sdb.vdi"
         ]
       end
   end
@@ -54,16 +54,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       app.vm.hostname = "master-three.192.168.33.4.xip.io"
       app.vm.network "private_network", ip: "192.168.33.4"
       app.vm.provider "virtualbox" do |v|
-          v.name = "master-three-vagrant"
+          v.name = "master-three-okd36"
           v.memory = 2000
           v.cpus = 1
           #
            # Add first disk
           #
-          unless File.exists?("$HOME/VirtualBox/master-three/sdb.vdi")
+          unless File.exists?("/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-three/sdb.vdi")
           v.customize [
             'createmedium', 'disk',
-            '--filename', "$HOME/VirtualBox/master-three/sdb.vdi",
+            '--filename', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-three/sdb.vdi",
             '--format', 'VDI',
             '--size', 20 * 1024
           ]
@@ -74,7 +74,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
          '--port', 1,
          '--device', 0,
          '--type', 'hdd',
-         '--medium', "$HOME/VirtualBox/master-three/sdb.vdi"
+         '--medium', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-three/sdb.vdi"
           ]
         #
         # Increase portcount for second disk
@@ -87,10 +87,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         #
         # Add second disk
         #
-        unless File.exists?("$HOME/VirtualBox/master-three/sdc.vdi")
+        unless File.exists?("/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-three/sdc.vdi")
           v.customize [
             'createmedium', 'disk',
-            '--filename', "$HOME/VirtualBox/master-three/sdc.vdi",
+            '--filename', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-three/sdc.vdi",
             '--format', 'VDI',
             '--size', 50 * 1024
           ]
@@ -101,7 +101,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
               '--port', 1,
               '--device', 1,
               '--type', 'hdd',
-              '--medium', "$HOME/VirtualBox/master-three/sdc.vdi"
+              '--medium', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-three/sdc.vdi"
             ]
       end
   end
@@ -111,17 +111,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       app.vm.hostname = "infra.192.168.33.5.xip.io"
       app.vm.network "private_network", ip: "192.168.33.5"
       app.vm.provider "virtualbox" do |v|
-          v.name = "infra-one-vagrant"
+          v.name = "infra-one-okd36"
           v.memory = 2000
           v.cpus = 1
 
           #
            # Add first disk
           #
-          unless File.exists?("$HOME/VirtualBox/infra-one/sdb.vdi")
+          unless File.exists?("/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/infra-one/sdb.vdi")
           v.customize [
             'createmedium', 'disk',
-            '--filename', "$HOME/VirtualBox/infra-one/sdb.vdi",
+            '--filename', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/infra-one/sdb.vdi",
             '--format', 'VDI',
             '--size', 20 * 1024
           ]
@@ -132,7 +132,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
          '--port', 1,
          '--device', 0,
          '--type', 'hdd',
-         '--medium', "$HOME/VirtualBox/infra-one/sdb.vdi"
+         '--medium', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/infra-one/sdb.vdi"
           ]
         #
         # Increase portcount for second disk
@@ -145,10 +145,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         #
         # Add second disk
         #
-        unless File.exists?("$HOME/VirtualBox/infra-one/sdc.vdi")
+        unless File.exists?("/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/infra-one/sdc.vdi")
           v.customize [
             'createmedium', 'disk',
-            '--filename', "$HOME/VirtualBox/infra-one/sdc.vdi",
+            '--filename', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/infra-one/sdc.vdi",
             '--format', 'VDI',
             '--size', 50 * 1024
           ]
@@ -159,7 +159,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
               '--port', 1,
               '--device', 1,
               '--type', 'hdd',
-              '--medium', "$HOME/VirtualBox/infra-one/sdc.vdi"
+              '--medium', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/infra-one/sdc.vdi"
             ]
           end
 
@@ -170,16 +170,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       app.vm.hostname = "app-one.192.168.33.6.xip.io"
       app.vm.network "private_network", ip: "192.168.33.6"
       app.vm.provider "virtualbox" do |v|
-          v.name = "app-one-vagrant"
+          v.name = "app-one-okd36"
           v.memory = 2000
           v.cpus = 1
       #
        # Add first disk
       #
-      unless File.exists?("$HOME/VirtualBox/app-one/sdb.vdi")
+      unless File.exists?("/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/app-one/sdb.vdi")
       v.customize [
         'createmedium', 'disk',
-        '--filename', "$HOME/VirtualBox/app-one/sdb.vdi",
+        '--filename', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/app-one/sdb.vdi",
         '--format', 'VDI',
         '--size', 20 * 1024
       ]
@@ -190,7 +190,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      '--port', 1,
      '--device', 0,
      '--type', 'hdd',
-     '--medium', "$HOME/VirtualBox/app-one/sdb.vdi"
+     '--medium', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/app-one/sdb.vdi"
       ]
     #
     # Increase portcount for second disk
@@ -203,10 +203,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #
     # Add second disk
     #
-    unless File.exists?("$HOME/VirtualBox/app-one/sdc.vdi")
+    unless File.exists?("/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/app-one/sdc.vdi")
       v.customize [
         'createmedium', 'disk',
-        '--filename', "$HOME/VirtualBox/app-one/sdc.vdi",
+        '--filename', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/app-one/sdc.vdi",
         '--format', 'VDI',
         '--size', 50 * 1024
       ]
@@ -217,7 +217,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           '--port', 1,
           '--device', 1,
           '--type', 'hdd',
-          '--medium', "$HOME/VirtualBox/app-one/sdc.vdi"
+          '--medium', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/app-one/sdc.vdi"
         ]
       end
   end
@@ -231,16 +231,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.vm.provision "file", source: "../ansible", destination: "/tmp/"
       config.vm.provision "shell", path: "./bastion/configbastion.sh"
       app.vm.provider "virtualbox" do |v|
-        v.name = "master-one-vagrant"
+        v.name = "master-one-okd36"
         v.memory = 2000
         v.cpus = 1
       #
        # Add first disk
       #
-      unless File.exists?("$HOME/VirtualBox/master-one/sdb.vdi")
+      unless File.exists?("/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-one/sdb.vdi")
       v.customize [
         'createmedium', 'disk',
-        '--filename', "$HOME/VirtualBox/master-one/sdb.vdi",
+        '--filename', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-one/sdb.vdi",
         '--format', 'VDI',
         '--size', 20 * 1024
       ]
@@ -251,7 +251,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      '--port', 1,
      '--device', 0,
      '--type', 'hdd',
-     '--medium', "$HOME/VirtualBox/master-one/sdb.vdi"
+     '--medium', "/home/felixcentenera/IT/Tools/VirtualBox/Okd3.6/master-one/sdb.vdi"
       ]
       end
   end

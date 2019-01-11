@@ -7,6 +7,11 @@
     gpgcheck: no
     enabled: yes
 
+- name: Configuring Hosts to Use DNS
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+
 - name: Ensure required packages are installed
   package:
     name: "{{ item }}"
@@ -28,6 +33,11 @@
 
 - name: docker-storage-setup
   shell: docker-storage-setup
+
+- name: Allow insecure internal registry.
+  template:
+    src: docker.j2
+    dest: /etc/sysconfig/docker
 
 - name: start docker
   service: name=docker state=restarted enabled=true

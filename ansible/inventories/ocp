@@ -10,12 +10,15 @@ glusterfs
 [OSEv3:vars]
 ansible_ssh_user=root
 openshift_deployment_type=origin
-openshift_release=v3.9
+openshift_release=v3.6
 openshift_disable_check=memory_availability,disk_availability,docker_storage,package_version,docker_image_availability,package_availability
 os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
 #ansible_service_broker_install=false
 
+# Enable CNS (glusterfs) as default storage provider
+openshift_storage_glusterfs_namespace=glusterfs
+openshift_storage_glusterfs_name=storage
 
 # Defining htpasswd users
 # admin:r3dh4t1!
@@ -126,7 +129,8 @@ role_apps
 [preparation:vars]
 ansible_user=root
 #ansible_become=true
-yum_packages=['docker-1.13.1']
+yum_packages=['docker-1.13.1','wget','git','net-tools','bind-utils','yum-utils','iptables-services','bridge-utils','bash-completion','kexec-tools','sos','psacct','https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm','pyOpenSSL']
+
 
 [postinstallation:children]
 role_master
@@ -134,5 +138,4 @@ role_infra
 role_apps
 
 [postinstallation:vars]
-ansible_user=root
 yum_packages_post_install=['e2fsprogs']
